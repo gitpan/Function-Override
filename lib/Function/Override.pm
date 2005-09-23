@@ -6,7 +6,7 @@ use vars qw( $Debug $VERSION @EXPORT );
 
 use base qw(Exporter);
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 @EXPORT = qw(override);
 
 $Debug = $ENV{PERL_FUNCTION_OVERRIDE_DEBUG} || 0 unless defined $Debug;
@@ -108,7 +108,6 @@ EOS
       no strict 'refs'; # to avoid: Can't use string (...) as a symbol ref ...
       $code = <<"CODE";
 package $pkg;
-use Carp; 
 $code
 CODE
 
@@ -133,7 +132,7 @@ Function::Override - Add callbacks to existing functions.
 =head1 SYNOPSIS
 
     use Function::Override;
-    use Croak;
+    use Carp;
 
     BEGIN {
          override('open', 
@@ -186,6 +185,18 @@ If true, this flag turns on debugging output.
 Michael G Schwern <schwern@pobox.com> but its really 99.99% Fatal.pm by 
 Lionel.Cons@cern.ch
 
+
+=head1 COPYRIGHT
+
+Copyright 2000, 2005 by Michael G Schwern E<lt>schwern@pobox.comE<gt>.
+
+
+=head1 LICENSE
+
+This program is free software; you can redistribute it and/or 
+modify it under the same terms as Perl itself.
+
+See L<http://www.perl.com/perl/misc/Artistic.html>
 
 =head1 SEE ALSO
 

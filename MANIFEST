@@ -2,3 +2,4 @@ lib/Function/Override.pm
 t/Override.t
 MANIFEST
 Makefile.PL
+META.yml                                 Module meta-data (added by MakeMaker)
