@@ -1,13 +1,13 @@
 --- #YAML:1.0
 name:                Function-Override
-version:             0.02
+version:             0.03
 abstract:            ~
-license:             perl
-generated_by:        ExtUtils::MakeMaker version 6.30_01
+license:             ~
 author:              ~
+generated_by:        ExtUtils::MakeMaker version 6.37_01
 distribution_type:   module
 requires:     
-    Test::More:                    0
+    Test::More:                    0.62
 meta-spec:
-    url: http://module-build.sourceforge.net/META-spec-new.html
-    version: 1.1
+    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
+    version: 1.3

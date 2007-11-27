@@ -6,7 +6,7 @@ use vars qw( $Debug $VERSION @EXPORT );
 
 use base qw(Exporter);
 
-$VERSION = '0.02';
+$VERSION = '0.03';
 @EXPORT = qw(override);
 
 $Debug = $ENV{PERL_FUNCTION_OVERRIDE_DEBUG} || 0 unless defined $Debug;
@@ -23,10 +23,10 @@ sub fill_protos {
   while ($proto =~ /\S/) {
     $n++;
     push(@out1,[$n,@out]) if $seen_semi;
-    push(@out, $1 . "{\$_[$n]}"), next if $proto =~ s/^\s*\\([\@%\$\&])//;
-    push(@out, "\$_[$n]"), next if $proto =~ s/^\s*([*\$&])//;
-    push(@out, "\@_[$n..\$#_]"), last if $proto =~ s/^\s*(;\s*)?\@//;
-    $seen_semi = 1, $n--, next if $proto =~ s/^\s*;//; # XXXX ????
+    push(@out, $1 . "{\$_[$n]}"),   next if $proto =~ s/^\s*\\([\@%\$\&])//;
+    push(@out, "\$_[$n]"),          next if $proto =~ s/^\s*([*\$&_])//;
+    push(@out, "\@_[$n..\$#_]"),    last if $proto =~ s/^\s*(;\s*)?\@//;
+    $seen_semi = 1, $n--,           next if $proto =~ s/^\s*;//; # XXXX ????
     die "Unknown prototype letters: \"$proto\"";
   }
   push(@out1,[$n+1,@out]);
@@ -185,18 +185,6 @@ If true, this flag turns on debugging output.
 Michael G Schwern <schwern@pobox.com> but its really 99.99% Fatal.pm by 
 Lionel.Cons@cern.ch
 
-
-=head1 COPYRIGHT
-
-Copyright 2000, 2005 by Michael G Schwern E<lt>schwern@pobox.comE<gt>.
-
-
-=head1 LICENSE
-
-This program is free software; you can redistribute it and/or 
-modify it under the same terms as Perl itself.
-
-See L<http://www.perl.com/perl/misc/Artistic.html>
 
 =head1 SEE ALSO
 
